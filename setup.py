@@ -1,12 +1,13 @@
 from setuptools import setup, find_packages
 from os.path import join, dirname
-import secret_storage
+import kan_secret_storage as ss
 
 setup(
     name='kan_secret_storage',
-    version=secret_storage.__version__,
+    version=ss.__version__,
     description="Python Secret Storage package",
-    packages=find_packages(exclude=["tests.*", "tests"]),
+    packages=["kan_secret_storage"],
+    include_package_data=True,
     long_description=open(join(dirname(__file__), 'README.md')).read(),
     install_requires=['pycryptodome'],
     author="Andrew KAN",
