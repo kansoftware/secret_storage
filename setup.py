@@ -9,6 +9,7 @@ setup(
     packages=["kan_secret_storage"],
     include_package_data=True,
     long_description=open(join(dirname(__file__), 'README.md')).read(),
+    long_description_content_type="text/markdown",
     install_requires=['pycryptodome'],
     author="Andrew KAN",
     author_email="kan@kansoftware.ru",

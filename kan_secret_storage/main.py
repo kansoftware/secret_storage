@@ -2,11 +2,14 @@ from Crypto.PublicKey import RSA  # https://m.habr.com/ru/post/265309/?mobile=ye
 from Crypto.Cipher import PKCS1_OAEP
 import os
 
+
 gDefaultPath = ".store/"
+gPubFilePath = os.getenv("HOME") + "/.ssh/id_rsa.pub"
+gPrivFilePath = os.getenv("HOME") + '/.ssh/id_rsa'
 
 
 def storedata(aName, aData, aPath=gDefaultPath):
-    fn_pub = os.getenv("HOME") + '/.ssh/id_rsa.pub'
+    fn_pub = gPubFilePath
     key_pub = None
     with open(fn_pub, 'rb') as pub:
         key_pub = RSA.importKey(pub.read())
@@ -30,7 +33,7 @@ def getdata(aName, aPath=gDefaultPath):
     if not os.path.isfile(aPath+aName):
         return None
 
-    fn_priv = os.getenv("HOME") + '/.ssh/id_rsa'
+    fn_priv = gPrivFilePath
     key_priv = None
     with open(fn_priv, 'rb') as pub:
         key_priv = RSA.importKey(pub.read())
